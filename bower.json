@@ -1,0 +1,25 @@
+{
+  "name": "angular-study",
+  "homepage": "https://github.com/sooyoung32/angular-study",
+  "authors": [
+    "Sooyoung Park <sooyoung32@gmail.com>"
+  ],
+  "description": "angular-study",
+  "main": "app.js",
+  "moduleType": [],
+  "keywords": [
+    "angular-study"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}
