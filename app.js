@@ -7,7 +7,7 @@ var path = require('path');
 //호출 
 var app = express();
 
-//서버 설정
+// 서버 설정
 // 현재 디렉토리에 퍼블릭으로 한 폴더를 스태틱으로 올린다. 정적 파일 위치ㅣ
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -18,6 +18,9 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/html/index.html'));
 });
 
+app.get('/todo', function(req, res) {
+	res.sendFile(path.join(__dirname + '/public/html/todo.html'));
+});
 app.listen(8080);
 
 //log 
