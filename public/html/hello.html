@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" >
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/hello.js"></script>
+    <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-app="hello" ng-controller="HelloController">
+    <input type="text" ng-model="hello.msg">
+    <br>
+    <strong>{{hello.msg}}</strong>
+    <br>
+    <button ng-click="toUpper()">대문자로 전환!!</button>
+
+    <br>
+    <h1> 장바구니 </h1>
+    <div ng-repeat="item in items">
+        <span>{{$index}}</span>
+        <span>{{item.title}}</span>
+        <span> 수량:</span>
+        <input type="text" ng-model="item.count">
+        <span> 가격:{{item.price}}</span>
+        <span> 총합:{{item.count * item.price}}원</span>
+        <button ng-click="remove($index)">삭제</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="book">
+<head>
+    <meta charset="UTF-8">
+    <title>서점</title>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/controllers/book.js"></script>
+    <script src="../js/controllers/bookList.js"></script>
+    <script src="../js/filters/customFilter.js"></script>
+    <script src="../js/filters/bookCustomFilter.js"></script>
+    <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-controller="bookCtrl">
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">서점</a>
+</div>
+<div class="panel panel-default row" ng-controller="bookListCtrl">
+    <div class="col-xs-3">
+        <a ng-click="selectGrade()" class="btn btn-block btn-default btn-lg">Home</a>
+        <a ng-repeat="item in data.books | orderBy:'grade':true | grade" ng-click="selectGrade(item)"
+           class="btn btn-block btn-default btn-lg">
+            <strong>{{gradeToStar(item)}}</strong>
+        </a>
+    </div>
+    <div class="col-xs-8">
+        <div class="well" ng-repeat="item in data.books | orderBy:'grade':true | filter:gradeFilterFn">
+            <h3>
+                <strong>{{item.name}}</strong>
+                <span class="pull-right label label-primary">{{item.price | number:0}} 원</span>
+            </h3>
+            <span class="lead">평점 : {{item.grade}}</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

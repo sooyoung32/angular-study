@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko" ng-app>
+<html lang="ko" ng-app="app">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="../components/angularjs/angular.js"></script>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/app.js"></script>
     <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
 </head>
-<body>
-    <div class="btn btn-default">{{"AngularJS"}}</div>
-    <div class="btn btn-success">Bootstrap</div>
+<body ng-controller="MainController">
+    <span>Insert your name: </span>
+    <input type="text" ng-model="user.name"/>
+    <h3>Show: {{user.name}}</h3>
+    <button ng-click="show()">Click!!!</button>
 </body>
 </html>
