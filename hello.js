@@ -1,6 +1,5 @@
 angular.module('hello', [])
-    //$... 의존성 주입 
-    .controller('HelloController', function($scope, $filter, $http){
+    .controller('HelloController', function($scope, $filter){
         $scope.hello = {
             msg : 'hello.'
         }
@@ -30,12 +29,4 @@ angular.module('hello', [])
         $scope.remove = function(index){
             $scope.items.splice(index, 1);
         }
-
-        $scope.loadData = function() {
-            $http.get('/hello/data').success(function(data){
-                $scope.products = data
-            });
-
-        }
-
     });

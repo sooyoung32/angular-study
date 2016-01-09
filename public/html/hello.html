@@ -26,5 +26,30 @@
         <span> 총합:{{item.count * item.price}}원</span>
         <button ng-click="remove($index)">삭제</button>
     </div>
+
+<!-- Ajax로 추가된 부분-->
+<br><br>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>No</th> <th>이름</th> <th>수량</th> <th>가격</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="product in products">
+                <td>{{$index}}</td>
+                <td>{{product.title}}</td>
+                <td>{{product.count}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            <button class="btn btn-primary" ng-click="loadData()"> 데이터 불러오기 </button>
+        </p>
+    </div>
+</div>
 </body>
 </html>

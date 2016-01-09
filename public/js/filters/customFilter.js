@@ -31,7 +31,7 @@ angular.module('customFilter', [])
         }
     }
 })
-.filter('pageCount', function(){
+.filter('pageCount', function(){ //페이지 수
    return function (data, size){
        if(angular.isArray(data)){
            var result = [];

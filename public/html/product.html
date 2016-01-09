@@ -14,7 +14,11 @@
 <div class="navbar navbar-inverse">
     <a class="navbar-brand" href="#">포인트 상점</a>
 </div>
-<div class="panel panel-default row" ng-controller="productListCtrl">
+<div class="alert alert-danger" ng-show="data.error">
+    Error ({{data.error.status}}). 페이지를 불러올 수 없습니다.
+    <a href="/" class="alert-link"> 첫페이지 가기</a>
+</div>
+<div class="panel panel-default row" ng-controller="productListCtrl" ng-hide="data.error">
     <div class="col-xs-3">
         <a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
         <a ng-repeat="item in data.products | orderBy: 'category' | unique:'category'"
