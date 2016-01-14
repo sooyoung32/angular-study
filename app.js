@@ -51,6 +51,36 @@ app.post('/hello/data', function(req, res, next){
   }); 
 
 
+var moneyBooks= [
+    {date: '2016. 1. 11. 오후 8:25:39', description : '저녁식사', money :7000},
+    {date: '2016. 1. 12. 오전 7:29:49', description : '아침식사', money :3800},
+    {date: '2016. 1. 12. 오전 11:45:19', description : '점심식사', money :5500}
+];
+
+app.get('/money_book', function(req, res){
+    res.sendFile(path.join(__dirname + '/public/html/money_book.html'));
+});
+
+app.get('/money_book/data', function(req, res){
+    res.json(moneyBooks);
+});
+
+app.post('/money_book/data', function(req, res, next) {
+    var body = req.body;    
+    console.log('req body : ' + JSON.stringify(body));              
+      
+    if( !body.description ||!body.money){
+        next(new Error('빈값이 있다!'));
+    } else{
+        moneyBooks.push(body);
+        res.json(true);
+    }
+
+});
+
+
+
+
 app.get('/todo', function(req, res){
     res.sendFile(path.join(__dirname + '/public/html/todo.html'));
 });
@@ -78,6 +108,7 @@ app.get('/product', function(req, res){
 app.get('/books', function(req, res){
     res.sendFile(path.join(__dirname + '/public/html/book.html'));
 });
+
 
 app.listen(8080);
 console.log('Express Listening on port 8080...');

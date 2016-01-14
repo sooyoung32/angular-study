@@ -1,0 +1,48 @@
+<html lang="ko" >
+<head>
+    <meta charset="UTF-8">
+    <title>Money Book</title>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/money_book.js"></script>
+    <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-app="money-book" ng-controller="MoneyBookController">
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>index</th><th>date</th> <th>description</th> <th>money</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="moneyBook in moneyBooks">
+        		<td>{{$index}}</td>
+                <td>{{moneyBook.date}}</td>
+                <td>{{moneyBook.description}}</td>
+                <td>{{moneyBook.money}}</td>
+            </tr>
+            <tr>
+                <td>New</td>
+           
+                <td><input type="hidden" class="form-control" ng-model="moneyBook.date"></td>
+                <td><input type="text" class="form-control" ng-model="moneyBook.description"></td>
+                <td><input type="text" class="form-control" ng-model="moneyBook.money"></td>
+            </tr>
+            <tr>
+                <td colspan="4"><span> 총합:{{getTotal()}}원</span></td>
+            </tr>
+
+            </tbody>
+        </table>
+        <p>
+            <button class="btn btn-primary" ng-click="loadData()"> 데이터 불러오기 </button>
+            <button class="btn btn-success" ng-click="pushData(moneyBook)"> 데이터 추가하기 </button>
+            <button class="btn btn-danger" ng-click="pushData2(moneyBook)"> 데이터 추가하기2 </button>
+        </p>
+    </div>
+</div>
+</body>
+</html>
