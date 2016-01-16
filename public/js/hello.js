@@ -1,6 +1,6 @@
 angular.module('hello', [])
     //$... 의존성 주입 
-    .controller('HelloController', function($scope, $filter, $http){
+    .controller('HelloController', function($scope, $filter, $http, $timeout){
         $scope.hello = {
             msg : 'hello.'
         };
@@ -54,7 +54,7 @@ angular.module('hello', [])
             });
 
         };
-
+        //promise 이용 
         $scope.pushData2 = function(product) {
             $http.post('/hello/data' , product)
                  .then(function(data) {
@@ -74,5 +74,26 @@ angular.module('hello', [])
                         alert('unknown error \n' + response.data);
                     }
                 });       
+        };
+
+        $scope.result=false;
+        $scope.showQuiz = function(){
+            $scope.result = true;
+            var promiseObj = $timeout(function(){
+                return $scope.answer;
+            }, 3000);
+
+            promiseObj.then(function(input){
+                if (input == 39) {
+                    $scope.result=true;
+                    $scope.msg="정답!";
+                }else{
+                    $scope.result=false;
+                    $scope.msg="틀렸어요ㅠㅠ";
+                }
+                $scope.info = "다시 시작하려면 refresh 해주세요";
+
+            });
+
         };
     });

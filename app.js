@@ -66,7 +66,9 @@ app.get('/money_book/data', function(req, res){
 });
 
 app.post('/money_book/data', function(req, res, next) {
-    var body = req.body;    
+    var body = req.body;
+    //여기는 보안이 좋다.
+    //body.data  = new Date();    
     console.log('req body : ' + JSON.stringify(body));              
       
     if( !body.description ||!body.money){
