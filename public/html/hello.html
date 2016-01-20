@@ -61,5 +61,24 @@
         </p>
     </div>
 </div>
+
+<br><br>
+<div class="container">
+    <button class="btn btn-info" ng-click="showQuiz()">문제 시작</button>
+    <div class="well clearfix">
+        <div ng-hide="result===false">
+            <p><h1>3초안에 답을 말하세요!</h1></p>
+            10-1+29+2-1 = <input ng-model="answer">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="well"> {{result}} <br> {{info}}</p>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>
