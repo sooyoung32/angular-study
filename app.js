@@ -111,6 +111,38 @@ app.get('/books', function(req, res){
     res.sendFile(path.join(__dirname + '/public/html/book.html'));
 });
 
+/**
+ * product 암호화
+ * 구매 버튼 -> 서버 암호키 요청(/product/secret)
+ * -> 서버에서 받은 암호키와 장바구니 리스트를 '/product/buy'로 전송
+ * -> 암호키가 현재 발금된 아호키가 맞는지 검증
+ * -> 리턴 결과를 alert() 출력
+ * @type {number}
+ */
+var secretKey = 12345;
+app.get('/product/secret', function (req, res) {
+    secretKey = Math.floor((Math.random() * 99999) + 10000);
+    console.log('current secret key : ' + secretKey);
+    res.json(secretKey);
+});
+
+var limitMoney = 100000;
+app.post('/product/buy', function (req, res) {
+    var list = req.body.list,
+        key = req.body.secretKey,
+        sum = 0;
+
+    if (key != secretKey) {
+        console.log('request key : ' + key);
+        res.json("secret key가 틀렸습니다.");
+    } else {
+        for (var i = 0; i < list; i++) {
+            sum += list[i].price;
+        }
+
+        res.json(sum <= limitMoney ? '구매 성공' : '금액이 초과하였습니다.');
+    }
+});
 
 app.listen(8080);
 console.log('Express Listening on port 8080...');
