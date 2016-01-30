@@ -11,10 +11,14 @@ angular.module('money-book',[])
 
    	$scope.getTotal = function() {
    		var total = 0;
-      for(var i = 0; i < $scope.moneyBooks.length; i++) {
-   			var moneyBook = $scope.moneyBooks[i];
-   			total = total + parseInt(moneyBook.money);
-   		}
+      if (angular.isArray(moneyBooks)) {
+        for(var i = 0; i < $scope.moneyBooks.length; i++) {
+          var moneyBook = $scope.moneyBooks[i];
+          //자바스크림트는 화면에서 받는 데이터 타입이 정수라고 확신할 수 없기 때문에 
+          //parseInt를 꼭 해줘야 한다.
+          total = total + parseInt(moneyBook.money);
+        }  
+      }
    		return total;
    	}
 
