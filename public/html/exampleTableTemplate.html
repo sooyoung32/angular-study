@@ -1,0 +1,11 @@
+<table>
+	<thead>
+		<tr><th>name</th><th>price</th></thead></tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in products">
+			<td>{{item.name}}</td>
+			<td>{{item.price | currency}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -59,4 +59,24 @@ angular.module('example')
 			template : '<ul><li ng-repeat = "product in products">{{product.name}}</li></ul>'
 		}
 	})
+	.directive('templateList', function(){
+		return {
+			link : function(scope, element, attrs) {
+
+			},
+			restrict : 'A',
+			templateUrl : function(el, attrs) {
+				// 바로 위 directive 인 products 에서 scope에 products 데이터를 넣어주므로 해당 데이터 활용.
+				var defaultPath  = "../../html/";
+				var templateName = (attrs['template'] === 'table') ? 'exampleTableTemplate.html' : 'exampleTemplate.html';
+				return defaultPath + templateName;
+
+
+			},
+			//  부모 태그(example.html 의 templateList div)에 정의된 속성이 내가 불러온 html 파일의 최상단 코드의 속성으로 대체된다.
+			// 따라서 이는 공통 모듈로 쓰고 사용하는 쪽에서 바꿀수 있다.
+			replace : true
+		}
+		
+	}) 
 
