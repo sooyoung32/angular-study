@@ -72,7 +72,10 @@ angular.module('example')
 				return defaultPath + templateName;
 
 
-			}
+			},
+			//  부모 태그(example.html 의 templateList div)에 정의된 속성이 내가 불러온 html 파일의 최상단 코드의 속성으로 대체된다.
+			// 따라서 이는 공통 모듈로 쓰고 사용하는 쪽에서 바꿀수 있다.
+			replace : true
 		}
 		
 	}) 
