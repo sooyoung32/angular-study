@@ -59,4 +59,21 @@ angular.module('example')
 			template : '<ul><li ng-repeat = "product in products">{{product.name}}</li></ul>'
 		}
 	})
+	.directive('templateList', function(){
+		return {
+			link : function(scope, element, attrs) {
+
+			},
+			restrict : 'A',
+			templateUrl : function(el, attrs) {
+				// 바로 위 directive 인 products 에서 scope에 products 데이터를 넣어주므로 해당 데이터 활용.
+				var defaultPath  = "../../html/";
+				var templateName = (attrs['template'] === 'table') ? 'exampleTableTemplate.html' : 'exampleTemplate.html';
+				return defaultPath + templateName;
+
+
+			}
+		}
+		
+	}) 
 
